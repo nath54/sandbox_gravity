@@ -47,7 +47,7 @@ def grav(objs):
         o.py+=vity
     for o in objs:
         for oo in objs:
-            if o!=oo and (o.px!=oo.px or o.py!=oo.py) and o.masse<=oo.masse:
+            if o!=oo and (o.px!=oo.px or o.py!=oo.py):
                 fg=(cg*o.masse*oo.masse)/math.pow(math.sqrt(math.pow(o.px-oo.px,2)+math.pow(o.py-oo.py,2)),2)
                 v=fg
                 a=oo.px-o.px
@@ -61,6 +61,7 @@ def grav(objs):
                     d=(a*v)/c
                     o.px+=d
                     o.py+=e
+    """
     otd=[]
     for o in objs:
         for oo in objs:
@@ -75,6 +76,7 @@ def grav(objs):
     for o in otd:
         if o in objs:
             del(objs[objs.index(o)])
+    """
 
 objs=[]
 tcurs=10
