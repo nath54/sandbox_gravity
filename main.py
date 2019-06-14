@@ -72,11 +72,15 @@ def grav(objs,pause,activtraces):
                     if v>=c:
                         o.px=oo.px
                         o.py=oo.py
+                        o.vitx=0
+                        o.vity=0
                     else:
                         e=(b*v)/c
                         d=(a*v)/c
-                        o.px+=d
-                        o.py+=e
+                        #o.px+=d
+                        #o.py+=e
+                        o.vitx+=d
+                        o.vity+=e
                     if activtraces: o.traces.append([o.px,o.py])
 
 objs=[]
