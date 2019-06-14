@@ -58,37 +58,29 @@ def aff(objs,msel,tcurs,poscurs,fps,dc,pause,cam,objsel,activtraces):
 def grav(objs,pause,activtraces):
     if not pause:
         for o in objs:
-            o.px+=o.vitx
-            o.py+=o.vity
-            if activtraces: o.traces.append([o.px,o.py])
-        for o in objs:
             for oo in objs:
                 if o!=oo and (o.px!=oo.px or o.py!=oo.py):
                     fg=(cg*o.masse*oo.masse)/math.pow(math.sqrt(math.pow(o.px-oo.px,2)+math.pow(o.py-oo.py,2)),2)
+                    #fg/=o.masse
                     v=fg
                     a=oo.px-o.px
                     b=oo.py-o.py
                     c=math.sqrt(a*a+b*b)
-                    if v>=c:
-                        o.px=oo.px
-                        o.py=oo.py
-                        o.vitx=0
-                        o.vity=0
-                    else:
-                        e=(b*v)/c
-                        d=(a*v)/c
-                        #o.px+=d
-                        #o.py+=e
-                        o.vitx+=d
-                        o.vity+=e
-                    if activtraces: o.traces.append([o.px,o.py])
+                    e=(b*v)/c
+                    d=(a*v)/c
+                    o.vitx+=d
+                    o.vity+=e
+        for o in objs:
+            o.px+=o.vitx
+            o.py+=o.vity
+            if activtraces: o.traces.append([o.px,o.py])
 
 objs=[]
 objsel=None
 tcurs=10
 fps=0
 msel=0
-activtraces=False
+activtraces=True
 
 dc=None
 pause=False
