@@ -66,10 +66,14 @@ def grav(objs,pause,activtraces):
                     a=oo.px-o.px
                     b=oo.py-o.py
                     c=math.sqrt(a*a+b*b)
-                    e=(b*v)/c
-                    d=(a*v)/c
-                    o.vitx+=d
-                    o.vity+=e
+                    if c<=v:
+                        o.px=oo.px
+                        o.py=oo.py
+                    else:
+                        e=(b*v)/c
+                        d=(a*v)/c
+                        o.vitx+=d
+                        o.vity+=e
         for o in objs:
             o.px+=o.vitx
             o.py+=o.vity
@@ -143,6 +147,7 @@ while encour:
             dc=None
     t2=time.time()
     fps=int(1.0/(t2-t1))
+
 
 
 
